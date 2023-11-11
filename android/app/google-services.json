@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "747000703568",
+    "project_id": "groconnect-43349",
+    "storage_bucket": "groconnect-43349.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:747000703568:android:92b5019d7e579329b3ff55",
+        "android_client_info": {
+          "package_name": "com.example.grocerygo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBE83m1l-hsQc7OYmY4J5iAvZkfFvdTLxM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
