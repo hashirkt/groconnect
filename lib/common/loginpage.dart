@@ -3,11 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grocerygo/common/startpage.dart';
 import 'package:grocerygo/models/usermodel.dart';
-import 'package:grocerygo/screens/admin/adminhomepage.dart';
 import 'package:grocerygo/screens/admin/bottomnavbar.dart';
 import 'package:grocerygo/screens/user/Bottomnavigationbar.dart';
 import 'package:grocerygo/screens/user/forgotpassword.dart';
-import 'package:grocerygo/screens/user/homepage.dart';
 import 'package:grocerygo/common/registrationpage.dart';
 import 'package:grocerygo/services/userservices.dart';
 
@@ -127,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                             obscuringCharacter: "*",
                             controller: passwordcontroller,
                             validator: (value){
-                              if(value!.isEmpty || value!.length<8){
+                              if(value!.isEmpty || value.length<8){
                                 return "Field is mandatory and required minimum of 8 characters";
                               }
                               return null;

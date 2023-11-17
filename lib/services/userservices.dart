@@ -33,6 +33,7 @@ Future<DocumentSnapshot<Object?>> login(UserModel user)async{
   _pref.setString("token",userCredential.user!.refreshToken.toString());
   _pref.setString("name",snap['name']);
   _pref.setString("id",userCredential.user!.uid);
+  _pref.setString("usertype", snap['usertype']);
   print("admin");
 
   return snap;

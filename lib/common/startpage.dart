@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grocerygo/common/loginpage.dart';
+import 'package:grocerygo/screens/admin/adminhomepage.dart';
+import 'package:grocerygo/screens/user/Bottomnavigationbar.dart';
+import 'package:grocerygo/services/userservices.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class StartPage extends StatefulWidget {
   const StartPage({super.key});
@@ -10,6 +14,44 @@ class StartPage extends StatefulWidget {
 }
 
 class _StartPageState extends State<StartPage> {
+
+
+  UserServices _userServices = UserServices();
+
+  Future<void> _checkLoginStatus() async {
+    bool isLoggedIn = await _userServices.isLoggedin();
+    print(isLoggedIn);
+    if (!isLoggedIn) {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => LoginPage()));
+    } else {
+
+      SharedPreferences _pref = await SharedPreferences.getInstance();
+
+      var type = _pref.getString('usertype');
+
+      if(type=='user'){
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => BottomNavigationBarUser()),
+                (route) => false);
+      }else if(type=='admin'){
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => AdminDashboard()),
+                (route) => false);
+      }
+    }
+  }
+
+  @override
+  void initState() {
+    _checkLoginStatus();
+    super.initState();
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

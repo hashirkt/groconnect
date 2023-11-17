@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grocerygo/common/loginpage.dart';
-import 'package:grocerygo/screens/user/beverages.dart';
-import 'package:grocerygo/screens/user/candies.dart';
-import 'package:grocerygo/screens/user/cartscreen.dart';
-import 'package:grocerygo/screens/user/dairy-products.dart';
 import 'package:grocerygo/screens/user/fruits.dart';
-import 'package:grocerygo/screens/user/meat.dart';
 import 'package:grocerygo/screens/user/offercoupon.dart';
-import 'package:grocerygo/screens/user/seafood.dart';
 import 'package:grocerygo/screens/user/shopbycategory.dart';
 import 'package:grocerygo/screens/user/vegetables.dart';
+import 'package:grocerygo/services/productservices.dart';
 import 'package:grocerygo/services/userservices.dart';
 
+import '../../constants/data.dart';
 import 'desserts.dart';
 
 class HomePage extends StatefulWidget {
@@ -22,6 +18,9 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+
+
+
 class _HomePageState extends State<HomePage> {
   UserServices userServices=UserServices();
   @override
@@ -29,6 +28,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: SafeArea(
         child: Container(
+          padding: EdgeInsets.all(20),
           height: double.infinity,
           width: double.infinity,
           child: SingleChildScrollView(
@@ -265,162 +265,37 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 SizedBox(height: 25,),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      Column(
+                Container(
+                  height: 120,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                      itemExtent: 120,
+
+                      itemCount: items.length,
+                      itemBuilder: (context,index){
+                      var item= items[index];
+                      print(item['image']);
+                      return Column(
                         children: [
                           InkWell(
-                            onTap:()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>Fruits())),
+                            onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>Fruits(
+                              category: item['name'],
+                            ))),
                             child: Container(
-                              height: 120,
-                              width: 120,
+                              margin: EdgeInsets.only(right: 10),
+                              height: 80,
+
                               decoration: BoxDecoration(
-                                color: Colors.red,
-                                image: DecorationImage(image: AssetImage("assets/images/fruits.jpg"),fit: BoxFit.cover),
+                                image: DecorationImage(image: AssetImage('${item['image']}'),fit: BoxFit.cover),
                                 borderRadius: BorderRadius.circular(12),
                               ),
                             ),
                           ),
                           SizedBox(height: 5,),
-                          Text("Fruits",style: GoogleFonts.aBeeZee(color: Colors.black,fontSize: 18,fontWeight: FontWeight.w600),)
+                          Text("${item['name']}",style: GoogleFonts.aBeeZee(color: Colors.black,fontSize: 18,fontWeight: FontWeight.w600),)
                         ],
-                      ),
-                      SizedBox(width: 15,),
-                      Column(
-                        children: [
-                          InkWell(
-                            onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>Desserts())),
-                            child: Container(
-                              height: 120,
-                              width: 120,
-                              decoration: BoxDecoration(
-                                color: Colors.red,
-                                image: DecorationImage(image: AssetImage("assets/images/pastry.jpg"),fit: BoxFit.cover),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 5,),
-                          Text("Desserts",style: GoogleFonts.aBeeZee(color: Colors.black,fontSize: 18,fontWeight: FontWeight.w600),)
-                        ],
-                      ),
-                      SizedBox(width: 15,),
-                      Column(
-                        children: [
-                          InkWell(
-                            onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>Vegetables())),
-                            child: Container(
-                              height: 120,
-                              width: 120,
-                              decoration: BoxDecoration(
-                                color: Colors.red,
-                                image: DecorationImage(image: AssetImage("assets/images/vegitables.jpg"),fit: BoxFit.cover),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 5,),
-                          Text("Vegetables",style: GoogleFonts.aBeeZee(color: Colors.black,fontSize: 18,fontWeight: FontWeight.w600),)
-                        ],
-                      ),
-                      SizedBox(width: 15,),
-                      Column(
-                        children: [
-                          InkWell(
-                            onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>Beverages())),
-                            child: Container(
-                              height: 120,
-                              width: 120,
-                              decoration: BoxDecoration(
-                                color: Colors.red,
-                                image: DecorationImage(image: AssetImage("assets/images/beverages.jpg"),fit: BoxFit.cover),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 5,),
-                          Text("Beverages",style: GoogleFonts.aBeeZee(color: Colors.black,fontSize: 18,fontWeight: FontWeight.w600),)
-                        ],
-                      ),
-                      SizedBox(width: 15,),
-                      Column(
-                        children: [
-                          InkWell(
-                            onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>DairyProducts())),
-                            child: Container(
-                              height: 120,
-                              width: 120,
-                              decoration: BoxDecoration(
-                                color: Colors.red,
-                                image: DecorationImage(image: AssetImage("assets/images/dairy products.jpg"),fit: BoxFit.cover),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 5,),
-                          Text("Dairy",style: GoogleFonts.aBeeZee(color: Colors.black,fontSize: 18,fontWeight: FontWeight.w600),)
-                        ],
-                      ),
-                      SizedBox(width: 15,),
-                      Column(
-                        children: [
-                          InkWell(
-                            onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>Candies())),
-                            child: Container(
-                              height: 120,
-                              width: 120,
-                              decoration: BoxDecoration(
-                                color: Colors.red,
-                                image: DecorationImage(image: AssetImage("assets/images/candy.jpg"),fit: BoxFit.cover),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 5,),
-                          Text("Candies",style: GoogleFonts.aBeeZee(color: Colors.black,fontSize: 18,fontWeight: FontWeight.w600),)
-                        ],
-                      ),
-                      SizedBox(width: 15,),
-                      Column(
-                        children: [
-                          InkWell(
-                            onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>Meat())),
-                            child: Container(
-                              height: 120,
-                              width: 120,
-                              decoration: BoxDecoration(
-                                color: Colors.red,
-                                image: DecorationImage(image: AssetImage("assets/images/meat.jpg"),fit: BoxFit.cover),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 5,),
-                          Text("Meat",style: GoogleFonts.aBeeZee(color: Colors.black,fontSize: 18,fontWeight: FontWeight.w600),),
-                        ],
-                      ),
-                      SizedBox(width: 15,),
-                      Column(
-                        children: [
-                          InkWell(
-                            onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>SeaFood())),
-                            child: Container(
-                              height: 120,
-                              width: 120,
-                              decoration: BoxDecoration(
-                                color: Colors.red,
-                                image: DecorationImage(image: AssetImage("assets/images/seafood.jpg"),fit: BoxFit.cover),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 5,),
-                          Text("Seafoods",style: GoogleFonts.aBeeZee(color: Colors.black,fontSize: 18,fontWeight: FontWeight.w600),)
-                        ],
-                      ),
-                    ],
+                      );
+                      }
                   ),
                 ),
                 SizedBox(height: 25,),
@@ -437,179 +312,69 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 SizedBox(height: 20,),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 260,
-                        width: 230,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade200,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              height: 180,
-                              width: 230,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(image: AssetImage("assets/images/vegetables/tomatoes.png"),fit: BoxFit.cover)
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text("Tomatoes",style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w800),),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text("1kg. ₹25",style: GoogleFonts.aBeeZee(color: Colors.deepOrange,fontSize: 20,fontWeight: FontWeight.w800),),
-                                      CircleAvatar(
-                                        backgroundColor: Colors.deepOrange,
-                                        radius: 15,
-                                        child: IconButton(onPressed: (){}, icon: Icon(Icons.add,color: Colors.white,)),
-                                      )
-                                    ],
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: 10,),
-                      Container(
-                        height: 260,
-                        width: 230,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade200,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              height: 180,
-                              width: 230,
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(image: AssetImage("assets/images/vegetables/cauliflower.png"),fit: BoxFit.cover)
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text("Cauliflower",style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w800),),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text("1kg. ₹20",style: GoogleFonts.aBeeZee(color: Colors.deepOrange,fontSize: 20,fontWeight: FontWeight.w800),),
-                                      CircleAvatar(
-                                        backgroundColor: Colors.deepOrange,
-                                        radius: 15,
-                                        child: Icon(Icons.add,color: Colors.white,),
-                                      )
-                                    ],
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: 10,),
-                      Container(
-                        height: 260,
-                        width: 230,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade200,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              height: 180,
-                              width: 230,
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(image: AssetImage("assets/images/vegetables/carrot.png",),fit: BoxFit.cover)
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text("Carrot",style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w800),),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text("1kg. ₹30",style: GoogleFonts.aBeeZee(color: Colors.deepOrange,fontSize: 20,fontWeight: FontWeight.w800),),
-                                      CircleAvatar(
-                                        backgroundColor: Colors.deepOrange,
-                                        radius: 15,
-                                        child: Icon(Icons.add,color: Colors.white,),
-                                      )
-                                    ],
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: 10,),
-                      Container(
-                        height: 260,
-                        width: 230,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade200,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              height: 180,
-                              width: 230,
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(image: AssetImage("assets/images/vegetables/cucumber.png"),fit: BoxFit.cover)
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text("Cucumber",style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w800),),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text("1kg. ₹25",style: GoogleFonts.aBeeZee(color: Colors.deepOrange,fontSize: 20,fontWeight: FontWeight.w800),),
-                                      CircleAvatar(
-                                        backgroundColor: Colors.deepOrange,
-                                        radius: 15,
-                                        child: Icon(Icons.add,color: Colors.white,),
-                                      )
-                                    ],
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+               Container(
+                 height: 260,
+                 child: FutureBuilder(
+                     future: ProductServices().getProductsByCategory('fruits'),
+                     builder: (context,snapshot){
+                       if(snapshot.hasData){
+                         return ListView.builder(
+                             shrinkWrap: true,
+                             scrollDirection: Axis.horizontal,
 
+                             itemCount:snapshot.data!.length ,
+                             itemBuilder: (context,index){
+                               var product=snapshot.data![index] ;
+                               print(product);
+                               return Container(
+                                 height: 260,
+                                 width: 230,
+                                 margin: EdgeInsets.only(right: 10),
+                                 decoration: BoxDecoration(
+                                   color: Colors.grey.shade200,
+                                   borderRadius: BorderRadius.circular(12),
+                                 ),
+                                 child: Column(
+                                   crossAxisAlignment: CrossAxisAlignment.start,
+                                   children: [
+                                     Container(
+                                       height: 180,
+                                       width: 230,
+                                       decoration: BoxDecoration(
+                                         image: DecorationImage(image: AssetImage("assets/images/vegetables.png"),fit: BoxFit.cover)
+                                       ),
+                                     ),
+                                     Padding(padding: const EdgeInsets.all(10),
+                                       child: Column(
+                                         crossAxisAlignment: CrossAxisAlignment.start,
+                                         children: [
+                                           Text("${product['name']} ₹${product['price']}",style: GoogleFonts.aBeeZee(color: Colors.deepOrange,fontSize: 20,fontWeight: FontWeight.w800),),
+                                           InkWell(
+                                             onTap: (){
 
-
-                ),
+                                               //todoo:add to cart
+                                             },
+                                             child: CircleAvatar(
+                                               backgroundColor: Colors.deepOrange,
+                                               radius: 15,
+                                               child: Icon(Icons.add,color: Colors.white,),
+                                             ),
+                                           )
+                                         ],
+                                       ),
+                                     )
+                                   ],
+                                 ),
+                               );
+                             }
+                         );
+                       }
+                       return Center(
+                         child: CircularProgressIndicator(),
+                       );
+                     },
+                 ),
+               )
 
               ],
             ),

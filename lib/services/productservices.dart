@@ -48,4 +48,11 @@ class ProductServices {
     final querySnapshot = await _productsCollection.get();
     return querySnapshot.docs.map((doc) => doc.data() as Map<String, dynamic>).toList();
   }
+
+  //get product by category
+
+Future<List<Map<String, dynamic>>> getProductsByCategory(String? category)async{
+    final querySnapshot = await _productsCollection.where('category ,isEqualTo: category').get();
+    return querySnapshot.docs.map((doc) => doc.data() as Map<String,dynamic>).toList();
+}
 }

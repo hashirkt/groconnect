@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:grocerygo/services/productservices.dart';
 
 class Fruits extends StatefulWidget {
-  const Fruits({super.key});
+
+  final String? category;
+  const Fruits({super.key,this.category});
 
   @override
   State<Fruits> createState() => _FruitsState();
@@ -69,538 +72,83 @@ class _FruitsState extends State<Fruits> {
                   ),
                 ),
                 SizedBox(height: 30,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      height: 200,
-                      width: 175,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 120,
-                            width: 175,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(topRight: Radius.circular(12),topLeft: Radius.circular(12)),
-                                image: DecorationImage(image: AssetImage("assets/images/fruits/apple.jpg"),fit: BoxFit.cover)
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Apples",style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w800),),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("1kg. ₹180",style: GoogleFonts.aBeeZee(color: Colors.deepOrange,fontSize: 20,fontWeight: FontWeight.w800),),
-                                    CircleAvatar(
-                                      backgroundColor: Colors.deepOrange,
-                                      radius: 15,
-                                      child: Icon(Icons.add,color: Colors.white,),
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    SizedBox(width: 10,),
-                    Container(
-                      height: 200,
-                      width: 175,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 120,
-                            width: 175,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(topRight: Radius.circular(12),topLeft: Radius.circular(12)),
-                                image: DecorationImage(image: AssetImage("assets/images/fruits/avocado.jpg"),fit: BoxFit.cover)
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Avocado",style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w800),),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("1kg. ₹80",style: GoogleFonts.aBeeZee(color: Colors.deepOrange,fontSize: 20,fontWeight: FontWeight.w800),),
-                                    CircleAvatar(
-                                      backgroundColor: Colors.deepOrange,
-                                      radius: 15,
-                                      child: Icon(Icons.add,color: Colors.white,),
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      height: 200,
-                      width: 175,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 120,
-                            width: 175,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(topRight: Radius.circular(12),topLeft: Radius.circular(12)),
-                                image: DecorationImage(image: AssetImage("assets/images/fruits/banana.jpg"),fit: BoxFit.cover)
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Banana",style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w800),),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("1kg. ₹35",style: GoogleFonts.aBeeZee(color: Colors.deepOrange,fontSize: 20,fontWeight: FontWeight.w800),),
-                                    CircleAvatar(
-                                      backgroundColor: Colors.deepOrange,
-                                      radius: 15,
-                                      child: Icon(Icons.add,color: Colors.white,),
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    SizedBox(width: 10,),
-                    Container(
-                      height: 200,
-                      width: 175,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 120,
-                            width: 175,
-                            decoration: BoxDecoration(borderRadius: BorderRadius.only(topRight: Radius.circular(12),topLeft: Radius.circular(12)),
-                                image: DecorationImage(image: AssetImage("assets/images/fruits/grapes.jpg"),fit: BoxFit.cover)
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Grapes",style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w800),),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("1kg. ₹60",style: GoogleFonts.aBeeZee(color: Colors.deepOrange,fontSize: 20,fontWeight: FontWeight.w800),),
-                                    CircleAvatar(
-                                      backgroundColor: Colors.deepOrange,
-                                      radius: 15,
-                                      child: Icon(Icons.add,color: Colors.white,),
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      height: 200,
-                      width: 175,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 120,
-                            width: 175,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(topRight: Radius.circular(12),topLeft: Radius.circular(12)),
-                                image: DecorationImage(image: AssetImage("assets/images/fruits/mango.jpg"),fit: BoxFit.cover)
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Mango",style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w800),),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("1kg. ₹80",style: GoogleFonts.aBeeZee(color: Colors.deepOrange,fontSize: 20,fontWeight: FontWeight.w800),),
-                                    CircleAvatar(
-                                      backgroundColor: Colors.deepOrange,
-                                      radius: 15,
-                                      child: Icon(Icons.add,color: Colors.white,),
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    SizedBox(width: 10,),
-                    Container(
-                      height: 200,
-                      width: 175,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 120,
-                            width: 175,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(topRight: Radius.circular(12),topLeft: Radius.circular(12)),
-                                image: DecorationImage(image: AssetImage("assets/images/fruits/orange.jpg"),fit: BoxFit.cover)
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Orange",style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w800),),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("1kg. ₹60",style: GoogleFonts.aBeeZee(color: Colors.deepOrange,fontSize: 20,fontWeight: FontWeight.w800),),
-                                    CircleAvatar(
-                                      backgroundColor: Colors.deepOrange,
-                                      radius: 15,
-                                      child: Icon(Icons.add,color: Colors.white,),
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      height: 200,
-                      width: 175,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 120,
-                            width: 175,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(topRight: Radius.circular(12),topLeft: Radius.circular(12)),
-                                image: DecorationImage(image: AssetImage("assets/images/fruits/papaya.jpg"),fit: BoxFit.cover)
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Papaya",style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w800),),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("1kg. ₹90",style: GoogleFonts.aBeeZee(color: Colors.deepOrange,fontSize: 20,fontWeight: FontWeight.w800),),
-                                    CircleAvatar(
-                                      backgroundColor: Colors.deepOrange,
-                                      radius: 15,
-                                      child: Icon(Icons.add,color: Colors.white,),
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    SizedBox(width: 10,),
-                    Container(
-                      height: 200,
-                      width: 175,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 120,
-                            width: 175,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(topRight: Radius.circular(12),topLeft: Radius.circular(12)),
-                                image: DecorationImage(image: AssetImage("assets/images/fruits/pineapple.jpg"),fit: BoxFit.cover)
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Pineapple",style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w800),),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("1kg. ₹60",style: GoogleFonts.aBeeZee(color: Colors.deepOrange,fontSize: 20,fontWeight: FontWeight.w800),),
-                                    CircleAvatar(
-                                      backgroundColor: Colors.deepOrange,
-                                      radius: 15,
-                                      child: Icon(Icons.add,color: Colors.white,),
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      height: 200,
-                      width: 175,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 120,
-                            width: 175,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(topRight: Radius.circular(12),topLeft: Radius.circular(12)),
-                                image: DecorationImage(image: AssetImage("assets/images/fruits/red-cherry.jpg"),fit: BoxFit.cover)
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Red Cherry",style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w800),),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("1kg. ₹70",style: GoogleFonts.aBeeZee(color: Colors.deepOrange,fontSize: 20,fontWeight: FontWeight.w800),),
-                                    CircleAvatar(
-                                      backgroundColor: Colors.deepOrange,
-                                      radius: 15,
-                                      child: Icon(Icons.add,color: Colors.white,),
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    SizedBox(width: 10,),
-                    Container(
-                      height: 200,
-                      width: 175,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 120,
-                            width: 175,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(topRight: Radius.circular(12),topLeft: Radius.circular(12)),
-                                image: DecorationImage(image: AssetImage("assets/images/fruits/strawberry.jpg"),fit: BoxFit.cover)
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Strawberry",style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w800),),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("1kg. ₹120",style: GoogleFonts.aBeeZee(color: Colors.deepOrange,fontSize: 20,fontWeight: FontWeight.w800),),
-                                    CircleAvatar(
-                                      backgroundColor: Colors.deepOrange,
-                                      radius: 15,
-                                      child: Icon(Icons.add,color: Colors.white,),
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      height: 200,
-                      width: 175,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 120,
-                            width: 175,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(topRight: Radius.circular(12),topLeft: Radius.circular(12)),
-                                image: DecorationImage(image: AssetImage("assets/images/fruits/watermelon.jpg"),fit: BoxFit.cover)
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Watermelon",style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w800),),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("1kg. ₹35",style: GoogleFonts.aBeeZee(color: Colors.deepOrange,fontSize: 20,fontWeight: FontWeight.w800),),
-                                    CircleAvatar(
-                                      backgroundColor: Colors.deepOrange,
-                                      radius: 15,
-                                      child: Icon(Icons.add,color: Colors.white,),
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    SizedBox(width: 10,),
-                    Container(
-                      height: 200,
-                      width: 175,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 120,
-                            width: 175,
-                            decoration: BoxDecoration(
-                                image: DecorationImage(image: AssetImage("assets/images/fruits/banana.jpg"),fit: BoxFit.cover)
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Banana",style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w800),),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("1kg. ₹35",style: GoogleFonts.aBeeZee(color: Colors.deepOrange,fontSize: 20,fontWeight: FontWeight.w800),),
-                                    CircleAvatar(
-                                      backgroundColor: Colors.deepOrange,
-                                      radius: 15,
-                                      child: Icon(Icons.add,color: Colors.white,),
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20,),
+
+                Expanded(
+                    child: FutureBuilder(
+                      future: ProductServices().getProductsByCategory(widget.category!.toLowerCase().toString()),
+                      builder: (context,snapshot){
+                        if(snapshot.hasData && snapshot.data!.length==0){
+                          return Center(
+                            child: Text("No Products"),
+                          );
+                        }
+                        if(snapshot.hasData){
+                          return GridView.builder(
+                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                childAspectRatio: 2/3,
+                                mainAxisSpacing: 10,
+                                crossAxisSpacing: 10
+                              ),
+
+                              itemCount: snapshot.data!.length,
+                              itemBuilder: (context , index){
+                                var product = snapshot.data![index];
+                                print(product);
+                                return Container(
+                                  height: 300,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.shade200,
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        height: 180,
+                                        width: 230,
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(image: AssetImage("assets/images/vegetables/tomatoes.png"),fit: BoxFit.cover)
+                                        ),
+                                      ),
+                                      Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text("${product['name']}", style: GoogleFonts.aBeeZee(fontSize: 20,fontWeight: FontWeight.w800),),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Text("${product['name']} ₹${product['price']}",style: GoogleFonts.aBeeZee(color: Colors.deepOrange,fontSize: 20,fontWeight: FontWeight.w800),),
+                                                InkWell(
+                                                  onTap: (){
+
+                                                    //todoo:add to cart
+                                                  },
+                                                  child: CircleAvatar(
+                                                    backgroundColor: Colors.deepOrange,
+                                                    radius: 15,
+                                                    child: Icon(Icons.add,color: Colors.white,),
+                                                  ),
+                                                )
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                );
+                              }
+                          );
+                        }
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      },
+                    )
+                )
 
 
               ],
